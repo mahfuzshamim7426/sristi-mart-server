@@ -148,7 +148,6 @@ async function run() {
             const email = req.params.email;
             const query = { email }
             const userCursor = await usersCollection.findOne(query);
-            // const user = await userCursor.toArray();
             res.send(userCursor);
         })
 
@@ -156,7 +155,7 @@ async function run() {
             const email = req.params.email;
             const query = { email }
             const user = await usersCollection.findOne(query);
-            res.send({ isSeller: user?.role === 'seller' });
+            res.send({ isSeller: user?.role === 'seller' || user?.role === 'admin' });
         })
 
 
