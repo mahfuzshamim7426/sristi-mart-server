@@ -105,6 +105,14 @@ async function run() {
             res.send(products);
         })
 
+        app.get('/products/seller/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { seller: id };
+            const productCursor = await productCollection.find(query);
+            const products = await productCursor.toArray();
+            res.send(products);
+        })
+
 
         // ===================user routes===========================
         app.get('/jwt', async (req, res) => {
