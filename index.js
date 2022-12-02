@@ -140,8 +140,8 @@ async function run() {
             const email = req.params.email;
             const query = { email }
             const userCursor = await usersCollection.findOne(query);
-            const user = await userCursor.toArray();
-            res.send(user);
+            // const user = await userCursor.toArray();
+            res.send(userCursor);
         })
 
         app.get('/users/seller/:email', async (req, res) => {
